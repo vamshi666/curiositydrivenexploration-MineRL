@@ -413,16 +413,13 @@ class MineRlEnvironment(Process):
             if done:
                 self.recent_rlist.append(self.rall)
                 print(
-                    "[Episode {}({})] Step: {}  Reward: {}  Recent Reward: {}  Stage: {} current x:{}   max x:{}".format(
+                    "[Episode {}({})] Step: {}  Reward: {}  Recent Reward: {}".format(
                         self.episode,
                         self.env_idx,
                         self.steps,
                         self.rall,
                         np.mean(
-                            self.recent_rlist),
-                        info['stage'],
-                        info['x_pos'],
-                        self.max_pos))
+                            self.recent_rlist)))
 
                 self.history = self.reset()
 
