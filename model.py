@@ -102,7 +102,7 @@ class CnnActorCriticNetwork(nn.Module):
             nn.LeakyReLU(),
             Flatten(),
             linear(
-                7 * 7 * 64,
+                4 * 4 * 64,
                 512),
             nn.LeakyReLU()
         )
@@ -140,6 +140,8 @@ class CnnActorCriticNetwork(nn.Module):
 
     def forward(self, state):
         x = self.feature(state)
+        print('forward feature output:', x.shape)
+        # x = x.view(x.size(0), -1)
         policy = self.actor(x)
         value = self.critic(x)
         return policy, value
@@ -153,10 +155,10 @@ class ICMModel(nn.Module):
         self.output_size = output_size
         self.device = torch.device('cuda' if use_cuda else 'cpu')
 
-        feature_output = 7 * 7 * 64
+        feature_output = 4 * 4 * 64
         self.feature = nn.Sequential(
             nn.Conv2d(
-                in_channels=4,
+                in_channels=8,
                 out_channels=32,
                 kernel_size=8,
                 stride=4),
