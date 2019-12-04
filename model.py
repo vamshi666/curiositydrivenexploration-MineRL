@@ -156,7 +156,7 @@ class ICMModel(nn.Module):
         feature_output = 4 * 4 * 64
         self.feature = nn.Sequential(
             nn.Conv2d(
-                in_channels=4,
+                in_channels=8,
                 out_channels=32,
                 kernel_size=8,
                 stride=4),

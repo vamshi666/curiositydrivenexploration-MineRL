@@ -194,7 +194,7 @@ def main():
             total_state.append(states)
             total_next_state.append(next_states)
             total_reward.append(rewards)
-            # total_done.append(dones)
+            total_done.append(dones)
             total_action.append(actions)
             total_values.append(value)
             total_policy.append(policy)
